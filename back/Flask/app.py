@@ -31,20 +31,20 @@ def hello():
     return output_json
 
 #GET REQUEST
-@app.route('/Users')
+@app.route('/users')
 def getUsers():
         query = "select *from users "
         data = databaseFn.getUsers(cursor,query)
         return jsonify(data)
 
-@app.route('/Users/<int:user_id>')
+@app.route('/users/<int:user_id>')
 def getUser(user_id):
     query = "select *from users where user_id = "+str(user_id)
     data = databaseFn.getUsers(cursor,query)
     return jsonify(data)
 
 #POST REQUEST
-@app.route('/Users', methods = ['POST'])
+@app.route('/users', methods = ['POST'])
 def createUser():
 
     content = request.get_json()
@@ -66,7 +66,7 @@ def createUser():
 
 
 #UPDATE REQUEST
-@app.route('/Users', methods = ['PUT'])
+@app.route('/users', methods = ['PUT'])
 def updateUser():
     content = request.get_json()
     user_id = content['id']
@@ -75,7 +75,7 @@ def updateUser():
     return jsonify(data)
 
 #DELETE REQUEST
-@app.route('/Users', methods = ['DELETE'])
+@app.route('/users', methods = ['DELETE'])
 def deleteUser():
     content = request.get_json()
     email = content['email']
@@ -100,14 +100,14 @@ def validateToken():
     return jsonify(data)
 
 #get tokens
-@app.route('/Tokens', methods = ['GET'])
+@app.route('/tokens', methods = ['GET'])
 def getTokens():
     data = databaseFn.getTokens(cursor)
     return jsonify(data)
 
 
 #Session start
-@app.route('/Session', methods = ['POST'])
+@app.route('/session', methods = ['POST'])
 def sessionStart():
     content = request.get_json()
     email = content['email']
@@ -119,7 +119,7 @@ def sessionStart():
     else:
         return jsonify({"advise":"bad email or password "})
 
-@app.route('/Session', methods = ['DELETE'])
+@app.route('/session', methods = ['DELETE'])
 def sessionDelete():
     content = request.get_json()
     email = content['email']
