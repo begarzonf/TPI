@@ -98,6 +98,7 @@ def getUsers(cursor,query):
         print(data)
     return data
 
+# Returns User on success
 def newUser(db,cursor,name,email,password):
     sql = "insert into users(name,email,password) values (\""+name+"\",\""+email+"\",\""+password+"\");"
     print(sql)
@@ -106,7 +107,7 @@ def newUser(db,cursor,name,email,password):
         cursor.execute(sql)
         # Commit your changes in the database
         db.commit()
-        return {"advise":"operation successfull","id":cursor.lastrowid}
+        return {"id":cursor.lastrowid, "name": name, "email": email}
     except:
         # Rollback in case there is any error
         db.rollback()
@@ -141,22 +142,21 @@ def deleteUser(db,cursor,email):
         db.rollback()
         return {"advise":"error on insert"}
 
-def generateToken(db,cursor,id,email):
+# Returns LoggedUser when successful
+def generateToken(db,cursor,user):
     now = time.strftime('%Y-%m-%d %H-%M-%S')
-    print(now)
     token = randomString()
-    sql = "insert into tokens(id,email,token,date) values (\""+str(id)+"\",\""+email+"\",\""+token+"\",\""+str(now)+"\");"
-    print(sql)
+    sql = "insert into tokens(id,email,token,date) values (\""+str(user["id"])+"\",\""+user["email"]+"\",\""+token+"\",\""+str(now)+"\");"
     try:
         # Execute the SQL command
         cursor.execute(sql)
         # Commit your changes in the database
         db.commit()
-        return {"advise":"operation successfull","id":id,"token":token}
     except:
         # Rollback in case there is any error
         db.rollback()
-        return {"advise":"error on insert"}
+        return {"error":"error on insert"}
+    return {"id":user["id"], "name":user["name"], "email":user["email"], "token":token}
 
 def validateToken(cursor,email,token):
     query = "select token,date from tokens where email like \""+ email+"\""
@@ -267,7 +267,6 @@ def expireToken(cursor,email):
 
 def validateUser(cursor,email,password):
     query = "select password from users where  TRIM(email) LIKE \""+email+"\";"
-    data = {}
     try:
         # Execute the SQL command
         cursor.execute(query)

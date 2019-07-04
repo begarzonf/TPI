@@ -7,6 +7,7 @@ import random
 import string
 import mysql.connector
 import time
+import logging
 
 app = Flask(__name__)
 
@@ -46,17 +47,18 @@ def getUser(user_id):
 #POST REQUEST
 @app.route('/users', methods = ['POST'])
 def createUser():
-
     content = request.get_json()
+    app.logger.info('create user ' + str(content))
     name = content['name']
     email = content['email']
     password = content['password']
     isValid = databaseFn.validateEmail(cursor,email)
     isValid2 =  databaseFn.validateName(cursor,name)
-    print("VALIDATION",isValid,isValid2)
     if isValid and isValid2:
         data = databaseFn.newUser(db,cursor,name,email,password)
-        data = databaseFn.generateToken(db,cursor,data["id"],email)
+        data = databaseFn.generateToken(db,cursor,data)
+        app.logger.info('returns' + str(data))
+        app.logger.info('=>'+str(jsonify(data)))
         return jsonify(data)
     elif not isValid2:
         return jsonify({"error": "el nombre ya existe"})

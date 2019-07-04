@@ -22,5 +22,8 @@
     <string name="action_sign_up">Sign up</string>
     <string name="already_have_account">Already have an account? Log in here:</string>
     <string name="user_created_successfully">Account created successfully</string>
+    <string name="passwords_do_not_match">Passwords do not match</string>
+    <string name="failed_to_create_user">An error occurred while creating the user</string>
+
 
 </resources>
