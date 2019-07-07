@@ -8,6 +8,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import un.tpi.carpoolun.Constants
 import un.tpi.carpoolun.model.LoggedUser
+import un.tpi.carpoolun.model.SignInData
 import un.tpi.carpoolun.model.NewUser
 import un.tpi.carpoolun.model.User
 
@@ -43,7 +44,11 @@ object Client {
         }
 
         fun create(user: NewUser, callback: Callback<LoggedUser>) {
-            service.createUser(user).enqueue( callback )
+            service.createUser(user).enqueue(callback)
+        }
+
+        fun signIn(signInData: SignInData, callback: Callback<LoggedUser>) {
+            service.logIn(signInData).enqueue(callback)
         }
     }
 }

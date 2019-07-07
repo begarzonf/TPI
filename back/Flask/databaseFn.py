@@ -203,7 +203,7 @@ def getTokens(cursor):
             token = row[2]
             date = row[3]
             # Now print fetched result
-            data[user_id] = {"id:":user_id,"email:": email, "token:":token,"date":date}
+            data[user_id] = {"id":user_id,"email": email, "token":token,"date":date}
             #print("id:",user_id,"name:",name,"email:", email, "password:",password )
     except:
         data["advise"] = "No se pudieron obtener los datos"
@@ -211,27 +211,27 @@ def getTokens(cursor):
     return data
 
 
-def updateToken(cursor,email):
-    data = {}
+# Returns LoggedUser when successful
+def updateToken(cursor,userEmail):
+    print("GENERATING TOKEN")
     token = randomString()
     now = time.strftime('%Y-%m-%d %H-%M-%S')
-    query = "update tokens set token = \""+token+"\" , date = \""+str(now)+"\" where TRIM(email) LIKE \""+email+"\";"
-    query2 = "select name from users where email LIKE \""+ email+"\";"
-    print(query)
+    query = "update tokens set token = \""+token+"\" , date = \""+str(now)+"\" where TRIM(email) LIKE \""+userEmail+"\";"
+    query2 = "select id, name, email from users where email LIKE \""+ userEmail+"\";"
+
     # Execute the SQL command
     try:
         cursor.execute(query)
         cursor.execute(query2)
         results = cursor.fetchall()
         for row in results:
-            name = row[0]
-        # Fetch all the rows in a list of lists.
-        data = {"advise":"token updated","token":token,"email":email,"name":name}
-        return data
+            userId = row[0]
+            userName = row[1]
+            userEmail = row[2]
+            return {"id":userId, "name":userName, "email":userEmail, "token":token}
     except:
-        data["advise"] = "No se pudieron obtener los datos"
-        print(data)
-        return data
+        pass
+    return { "advise": "No se pudieron obtener los datos" }
 
 def updateExpiration(cursor,email):
     data = {}

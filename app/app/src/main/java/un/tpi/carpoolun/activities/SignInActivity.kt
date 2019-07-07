@@ -14,8 +14,15 @@ import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatActivity
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import un.tpi.carpoolun.AppPreferences
 import un.tpi.carpoolun.Constants
 import un.tpi.carpoolun.R
+import un.tpi.carpoolun.client.Client
+import un.tpi.carpoolun.model.LoggedUser
+import un.tpi.carpoolun.model.SignInData
 
 class SignInActivity : AppCompatActivity() {
 
@@ -97,32 +104,33 @@ class SignInActivity : AppCompatActivity() {
         goToSignUp.setOnClickListener { goToSignUpActivity() }
     }
 
-    fun login(username: String, password: String) {
+    fun login(email: String, password: String) {
 
-        /*val context = this
-        val loginCallback = object : ApolloCall.Callback<CreateNewUserSessionMutation.Data> (){
-            override fun onFailure(e: ApolloException) {
-                showLoginFailed(R.string.login_failed)
+        val activity= this
+
+        val callback = object : Callback<LoggedUser> {
+            override fun onFailure(call: Call<LoggedUser>, t: Throwable) {
+                showLoginFailed()
             }
 
-            override fun onResponse(response: Response<CreateNewUserSessionMutation.Data>) {
-                val r = response.data()?.createNewUserSession()
-                val userId =  r?.id()!!
-                val token = r?.jwt()
-                if ( r == null || token == null ) {
-                    showLoginFailed(R.string.login_failed)
+            override fun onResponse(call: Call<LoggedUser>, response: Response<LoggedUser>) {
+                val loggedUser = response.body()
+                Log.d(TAG, "Logged user is $loggedUser")
+                if ( loggedUser == null || !loggedUser.isGood()) {
+                    showLoginFailed()
                 }
                 else {
-                    Client.reset(token)
-                    ElsaPreferences.setUserId(context, userId)
-                    ElsaPreferences.setSessionJwt(context, token)
-                    showLogginSuccessful()
-                    goToMainActivity()
+                    Log.d(TAG, "Successfuly")
+                    runOnUiThread {
+                        AppPreferences.saveUserSession(activity, loggedUser)
+                        showLogginSuccessful()
+                        goToMainActivity()
+                    }
                 }
             }
         }
 
-        Client.createUserSession(email=usergname, password = password, callback = loginCallback  )*/
+        Client.Users.signIn(SignInData(email=email, password=password), callback)
     }
 
     private fun goToMainActivity() {
@@ -142,19 +150,17 @@ class SignInActivity : AppCompatActivity() {
     private fun showLogginSuccessful() {
         val activity = this
         this.runOnUiThread {
-            val welcome = getString(R.string.welcome)
-            Toast.makeText(activity, "$welcome", Toast.LENGTH_SHORT).show()
+            Toast.makeText(activity, R.string.login_successful, Toast.LENGTH_SHORT).show()
         }
 
     }
 
-    private fun showLoginFailed(@StringRes errorString: Int) {
-        Log.d(TAG, "Login failed")
+    private fun showLoginFailed() {
         val activity = this
         this.runOnUiThread {
-            Toast.makeText(activity, activity.resources.getString(errorString), Toast.LENGTH_LONG).show()
+            Toast.makeText(activity, R.string.login_failed, Toast.LENGTH_LONG).show()
+            loading?.visibility = View.INVISIBLE
         }
-        loading?.visibility = View.INVISIBLE
     }
 
     /**

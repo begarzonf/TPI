@@ -101,7 +101,7 @@ def validateToken():
         data["isUpdated"] = isUpdated
     return jsonify(data)
 
-#get tokens
+#get tokenscontext 
 @app.route('/tokens', methods = ['GET'])
 def getTokens():
     data = databaseFn.getTokens(cursor)
@@ -109,7 +109,7 @@ def getTokens():
 
 
 #Session start
-@app.route('/session', methods = ['POST'])
+@app.route('/sessions', methods = ['POST'])
 def sessionStart():
     content = request.get_json()
     email = content['email']
@@ -117,6 +117,8 @@ def sessionStart():
     flag = databaseFn.validateUser(cursor,email,password)
     if flag:
         data = databaseFn.updateToken(cursor,email)
+        print(data)
+        print(jsonify(data))
         return jsonify(data)
     else:
         return jsonify({"advise":"bad email or password "})
