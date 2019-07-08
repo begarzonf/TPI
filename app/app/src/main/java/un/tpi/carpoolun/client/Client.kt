@@ -30,13 +30,13 @@ object Client {
                 object : Callback<List<User>> {
                     override fun onFailure(call: Call<List<User>>, t: Throwable) {
                         Log.d(TAG, "Failed :C")
-                        Log.d(TAG, t.message)
+                        Log.d(TAG, t.message ?: "message is null")
                         Log.d(TAG, call.request().toString())
                     }
 
                     override fun onResponse(call: Call<List<User>>, response: Response<List<User>>) {
                         response.body()?.forEach {
-                            Log.d(TAG, "Name is: " + it?.name + ", email is " + it?.email)
+                            Log.d(TAG, "Name is: " + it.name + ", email is " + it.email)
                         }
                     }
                 }

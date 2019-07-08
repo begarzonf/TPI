@@ -6,24 +6,24 @@
         android:layout_height="match_parent">
 
     <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/carpoolsRecyclerView"
+            android:id="@+id/carpoolListFragment_recyclerView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_margin="8dp">
     </androidx.recyclerview.widget.RecyclerView>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/writePostButton"
+            android:id="@+id/carpoolListFragment_searchFAB"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:clickable="true"
             android:layout_gravity="end|bottom"
-            app:srcCompat="@drawable/ic_add_circle_black_24dp"
+            app:srcCompat="@drawable/ic_search_black_24dp"
             android:focusable="true"
             android:layout_margin="16dp"
             app:fabSize="normal"
             app:backgroundTint="@color/colorPrimary"
-            app:elevation="6dp" android:visibility="invisible"/>
+            app:elevation="6dp"/>
 
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

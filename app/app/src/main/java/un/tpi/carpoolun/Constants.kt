@@ -5,7 +5,9 @@ object Constants {
     const val SERVER_URL = "http://10.0.2.2:5005"
     const val MIN_PASSWORD_LENGTH = 6
 
-    const val DATE_FORMAT = "yyyy-MM-dd HH:mm"
+    const val DATE_FORMAT = "yyyy-MM-dd"
+    const val TIME_FORMAT = "HH:mm"
+    const val FULL_DATE_FORMAT = "$DATE_FORMAT $TIME_FORMAT"
 
     object Preferences {
         const val USER_ID = "user_id"
