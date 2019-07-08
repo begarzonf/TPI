@@ -4,10 +4,10 @@ import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.POST
-import un.tpi.carpoolun.model.LoggedUser
-import un.tpi.carpoolun.model.SignInData
-import un.tpi.carpoolun.model.NewUser
-import un.tpi.carpoolun.model.User
+import un.tpi.carpoolun.models.user.LoggedUser
+import un.tpi.carpoolun.models.user.SignInData
+import un.tpi.carpoolun.models.user.NewUser
+import un.tpi.carpoolun.models.user.User
 
 const val users = "users"
 const val sessions = "sessions"

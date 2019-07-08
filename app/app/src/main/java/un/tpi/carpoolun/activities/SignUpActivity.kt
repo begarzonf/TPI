@@ -13,9 +13,8 @@ import retrofit2.Response
 import un.tpi.carpoolun.AppPreferences
 import un.tpi.carpoolun.R
 import un.tpi.carpoolun.client.Client
-import un.tpi.carpoolun.model.LoggedUser
-import un.tpi.carpoolun.model.NewUser
-import un.tpi.carpoolun.model.User
+import un.tpi.carpoolun.models.user.LoggedUser
+import un.tpi.carpoolun.models.user.NewUser
 
 
 class SignUpActivity : AppCompatActivity() {
@@ -94,7 +93,8 @@ class SignUpActivity : AppCompatActivity() {
             val user = NewUser(
                 name = name,
                 email = email,
-                password = password )
+                password = password
+            )
             Client.Users.create(user, callback)
         }
     }

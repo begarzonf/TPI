@@ -1,7 +1,7 @@
 package un.tpi.carpoolun
 
 import android.content.Context
-import un.tpi.carpoolun.model.LoggedUser
+import un.tpi.carpoolun.models.user.LoggedUser
 
 object AppPreferences {
 

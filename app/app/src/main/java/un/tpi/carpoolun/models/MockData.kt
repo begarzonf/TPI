@@ -1,4 +1,8 @@
-package un.tpi.carpoolun.model
+package un.tpi.carpoolun.models
+
+import un.tpi.carpoolun.Constants
+import un.tpi.carpoolun.models.carpool.Carpool
+import java.text.SimpleDateFormat
 
 object MockData
 {
@@ -10,7 +14,9 @@ object MockData
             capacity = 5,
             capacityLeft = 3,
             neighbourhood = "Funza",
-            type = Carpool.OUT_OF_UN
+            type = Carpool.OUT_OF_UN,
+            fee = 20000,
+            time = "2019-07-16 14:20"
         )
 
         val carpool2 = Carpool(
@@ -19,8 +25,10 @@ object MockData
             driverName = "Diego",
             capacity = 5,
             capacityLeft = 2,
-            neighbourhood = "Funza",
-            type = Carpool.TO_UN
+            neighbourhood = "Alqueria",
+            type = Carpool.TO_UN,
+            fee = 1500,
+            time = "2019-07-16 16:20"
         )
 
         val carpool3 = Carpool(
@@ -29,8 +37,10 @@ object MockData
             driverName = "Felipe",
             capacity = 5,
             capacityLeft = 3,
-            neighbourhood = "Funza",
-            type = Carpool.OUT_OF_UN
+            neighbourhood = "San Cristobal Sur",
+            type = Carpool.OUT_OF_UN,
+            fee = 2000,
+            time = "2019-07-17 9:20"
         )
 
         val carpool4 = Carpool(
@@ -39,8 +49,10 @@ object MockData
             driverName = "Gio",
             capacity = 5,
             capacityLeft = 3,
-            neighbourhood = "Funza",
-            type = Carpool.OUT_OF_UN
+            neighbourhood = "Las Cruces",
+            type = Carpool.OUT_OF_UN,
+            fee = 3400,
+            time = "2019-07-17 12:00"
         )
 
         val carpool5 = Carpool(
@@ -49,8 +61,10 @@ object MockData
             driverName = "Brayan",
             capacity = 5,
             capacityLeft = 4,
-            neighbourhood = "Funza",
-            type = Carpool.TO_UN
+            neighbourhood = "Tintal",
+            type = Carpool.TO_UN,
+            fee = 1500,
+            time = "2019-07-18 6:20"
         )
 
         val carpools = ArrayList<Carpool>()

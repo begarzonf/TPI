@@ -12,7 +12,6 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.ProgressBar
 import android.widget.Toast
-import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatActivity
 import retrofit2.Call
 import retrofit2.Callback
@@ -21,8 +20,8 @@ import un.tpi.carpoolun.AppPreferences
 import un.tpi.carpoolun.Constants
 import un.tpi.carpoolun.R
 import un.tpi.carpoolun.client.Client
-import un.tpi.carpoolun.model.LoggedUser
-import un.tpi.carpoolun.model.SignInData
+import un.tpi.carpoolun.models.user.LoggedUser
+import un.tpi.carpoolun.models.user.SignInData
 
 class SignInActivity : AppCompatActivity() {
 
@@ -130,7 +129,7 @@ class SignInActivity : AppCompatActivity() {
             }
         }
 
-        Client.Users.signIn(SignInData(email=email, password=password), callback)
+        Client.Users.signIn(SignInData(email = email, password = password), callback)
     }
 
     private fun goToMainActivity() {

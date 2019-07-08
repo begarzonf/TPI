@@ -7,10 +7,10 @@ import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import un.tpi.carpoolun.Constants
-import un.tpi.carpoolun.model.LoggedUser
-import un.tpi.carpoolun.model.SignInData
-import un.tpi.carpoolun.model.NewUser
-import un.tpi.carpoolun.model.User
+import un.tpi.carpoolun.models.user.LoggedUser
+import un.tpi.carpoolun.models.user.SignInData
+import un.tpi.carpoolun.models.user.NewUser
+import un.tpi.carpoolun.models.user.User
 
 
 object Client {
@@ -36,7 +36,7 @@ object Client {
 
                     override fun onResponse(call: Call<List<User>>, response: Response<List<User>>) {
                         response.body()?.forEach {
-                            Log.d(TAG, "NAME IS: " + it?.name)
+                            Log.d(TAG, "Name is: " + it?.name + ", email is " + it?.email)
                         }
                     }
                 }
