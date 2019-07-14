@@ -1,8 +1,10 @@
 from flask import Flask
 from flask import jsonify
 from flask import request
+import db.initializer as initializer
+import db.users as users
+import db.carpools as carpools
 import json
-import databaseFn
 import random
 import string
 import mysql.connector
@@ -22,9 +24,7 @@ def getMysqlConnection():
 
 db = getMysqlConnection()
 cursor = db.cursor()
-
-databaseFn.createDB(cursor)
-
+initializer.create(cursor)
 
 @app.route("/")
 def hello():
@@ -35,13 +35,13 @@ def hello():
 @app.route('/users')
 def getUsers():
         query = "select *from users "
-        data = databaseFn.getUsers(cursor,query)
+        data = users.getUsers(cursor,query)
         return jsonify(data)
 
 @app.route('/users/<int:user_id>')
 def getUser(user_id):
     query = "select *from users where user_id = "+str(user_id)
-    data = databaseFn.getUsers(cursor,query)
+    data = users.getUsers(cursor,query)
     return jsonify(data)
 
 #POST REQUEST
@@ -52,11 +52,11 @@ def createUser():
     name = content['name']
     email = content['email']
     password = content['password']
-    isValid = databaseFn.validateEmail(cursor,email)
-    isValid2 =  databaseFn.validateName(cursor,name)
+    isValid = users.validateEmail(cursor,email)
+    isValid2 =  users.validateName(cursor,name)
     if isValid and isValid2:
-        data = databaseFn.newUser(db,cursor,name,email,password)
-        data = databaseFn.generateToken(db,cursor,data)
+        data = users.newUser(db,cursor,name,email,password)
+        data = users.generateToken(db,cursor,data)
         app.logger.info('returns' + str(data))
         app.logger.info('=>'+str(jsonify(data)))
         return jsonify(data)
@@ -73,7 +73,7 @@ def updateUser():
     content = request.get_json()
     user_id = content['id']
     new_name = content['new_name']
-    data = databaseFn.updateUser(db,cursor,user_id,new_name)
+    data = users.updateUser(db,cursor,user_id,new_name)
     return jsonify(data)
 
 #DELETE REQUEST
@@ -81,7 +81,7 @@ def updateUser():
 def deleteUser():
     content = request.get_json()
     email = content['email']
-    data = databaseFn.deleteUser(db,cursor,email)
+    data = users.deleteUser(db,cursor,email)
     return jsonify(data)
 
 
@@ -93,8 +93,8 @@ def validateToken():
     #token = content['token']
     email = request.headers.get("email")
     token = request.headers.get("token")
-    data = databaseFn.validateToken(cursor,email,token)
-    isUpdated = databaseFn.updateExpiration(cursor,email)
+    data = users.validateToken(cursor,email,token)
+    isUpdated = users.updateExpiration(cursor,email)
     if isUpdated:
         data["isUpdated"] = isUpdated
     else:
@@ -104,7 +104,7 @@ def validateToken():
 #get tokenscontext 
 @app.route('/tokens', methods = ['GET'])
 def getTokens():
-    data = databaseFn.getTokens(cursor)
+    data = users.getTokens(cursor)
     return jsonify(data)
 
 
@@ -114,25 +114,42 @@ def sessionStart():
     content = request.get_json()
     email = content['email']
     password = content['password']
-    flag = databaseFn.validateUser(cursor,email,password)
+    flag = users.validateUser(cursor,email,password)
     if flag:
-        data = databaseFn.updateToken(cursor,email)
+        data = users.updateToken(cursor,email)
         print(data)
         print(jsonify(data))
         return jsonify(data)
     else:
-        return jsonify({"advise":"bad email or password "})
+        return jsonify({"error":"bad email or password "})
 
 @app.route('/session', methods = ['DELETE'])
 def sessionDelete():
     content = request.get_json()
     email = content['email']
-    isExpired = databaseFn.expireToken(cursor,email)
+    isExpired = users.expireToken(cursor,email)
     if isExpired:
-        return jsonify({"advise":"token expirado mi prro"})
+        return jsonify({"error":"token expirado mi prro"})
     else:
-        return jsonify({"advise":"token no expirado mi prro"})
+        return jsonify({"error":"token no expirado mi prro"})
+
+@app.route('/carpools', methods = ['GET'])
+def getAllCarpools():
+    return jsonify(carpools.getAllCarpools(cursor))
+
+@app.route('/carpools', methods = ['POST'])
+def createCarpool():
+    content = request.get_json()
+    driverId = content['driverId']
+    driverName = content['driverName']
+    time = content['time']
+    capacity = content['capacity']
+    capacityLeft = content['capacityLeft']
+    neighbourhood = content['neighbourhood']
+    ctype = content['type']
+    fee = content['fee']
+    return jsonify(carpools.createCarpool(db,cursor,driverId,driverName,time,capacity,capacityLeft,neighbourhood,ctype,fee))
+
 
 if __name__ == "__main__":
     app.run(debug=True,host='127.0.0.1',port = 5005)
-

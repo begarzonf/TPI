@@ -15,24 +15,6 @@ def time_between(d1, d2):
     return int(abs((d2 - d1).seconds)/60)
 
 
-def createDB(cursor):
-    sql = """CREATE TABLE IF NOT EXISTS users (
-        id INT(11) PRIMARY KEY AUTO_INCREMENT,
-        name VARCHAR(60) NOT NULL,
-        email VARCHAR(60) NOT NULL,
-        password VARCHAR(60) NOT NULL
-        ); """
-    cursor.execute(sql)
-
-    sql = """CREATE TABLE IF NOT EXISTS tokens (
-        id INT(11) PRIMARY KEY,
-        email VARCHAR(60) NOT NULL,
-        token VARCHAR(60) NOT NULL,
-        date VARCHAR(60) NOT NULL
-        ); """
-    cursor.execute(sql)
-
-
 def validateEmail(cursor,email):
     data = {}
     sql = "select *from users where email LIKE \""+ email+"\";"
@@ -49,7 +31,7 @@ def validateEmail(cursor,email):
             return True
         # Fetch all the rows in a list of lists.
     except:
-        data["advise"] = "No se pudieron obtener los datos"
+        data["error"] = "No se pudieron obtener los datos"
         #print ("Error: unable to fetch data")
         print(data)
     return flag
@@ -72,7 +54,7 @@ def validateName(cursor,name):
             return True
         # Fetch all the rows in a list of lists.
     except:
-        data["advise"] = "No se pudieron obtener los datos"
+        data["error"] = "No se pudieron obtener los datos"
         #print ("Error: unable to fetch data")
         print(data)
     return flag
@@ -94,7 +76,7 @@ def getUsers(cursor,query):
             #print("id:",user_id,"name:",name,"email:", email, "password:",password )
     except:
         data = {}
-        data["advise"] = "No se pudieron obtener los datos"
+        data["error"] = "No se pudieron obtener los datos"
         print(data)
     return data
 
@@ -111,7 +93,7 @@ def newUser(db,cursor,name,email,password):
     except:
         # Rollback in case there is any error
         db.rollback()
-        return {"advise":"error on insert"}
+        return {"error":"error on insert"}
 
 
 def updateUser(db,cursor,id,new_name):
@@ -122,11 +104,11 @@ def updateUser(db,cursor,id,new_name):
         cursor.execute(sql)
         # Commit your changes in the database
         db.commit()
-        return {"advise":"operation successfull"}
+        return {"error":"operation successfull"}
     except:
         # Rollback in case there is any error
         db.rollback()
-        return {"advise":"error on insert"}
+        return {"error":"error on insert"}
 
 def deleteUser(db,cursor,email):
     sql = "DELETE FROM users WHERE email = \""+ email+"\""
@@ -136,11 +118,11 @@ def deleteUser(db,cursor,email):
         cursor.execute(sql)
         # Commit your changes in the database
         db.commit()
-        return {"advise":"operation successfull"}
+        return {"error":"operation successfull"}
     except:
         # Rollback in case there is any error
         db.rollback()
-        return {"advise":"error on insert"}
+        return {"error":"error on insert"}
 
 # Returns LoggedUser when successful
 def generateToken(db,cursor,user):
@@ -174,15 +156,15 @@ def validateToken(cursor,email,token):
             d2 = datetime.strptime(now, '%Y-%m-%d %H-%M-%S')
         if token == query_token:
             if time_between(d1,d2) >= token_time:
-                data["advise"] = "Token Expired"
+                data["error"] = "Token Expired"
             else:
-                data["advise"] = "Token accepted"
+                data["error"] = "Token accepted"
                 data["time"] = time_between(d1,d2)
         else:
-            data["advise"] = "Token error"
+            data["error"] = "Token error"
 
     except:
-        data["advise"] = "No se pudieron obtener los datos"
+        data["error"] = "No se pudieron obtener los datos"
         print(data)
         return data
 
@@ -206,7 +188,7 @@ def getTokens(cursor):
             data[user_id] = {"id":user_id,"email": email, "token":token,"date":date}
             #print("id:",user_id,"name:",name,"email:", email, "password:",password )
     except:
-        data["advise"] = "No se pudieron obtener los datos"
+        data["error"] = "No se pudieron obtener los datos"
         print(data)
     return data
 
@@ -231,7 +213,7 @@ def updateToken(cursor,userEmail):
             return {"id":userId, "name":userName, "email":userEmail, "token":token}
     except:
         pass
-    return { "advise": "No se pudieron obtener los datos" }
+    return { "error": "No se pudieron obtener los datos" }
 
 def updateExpiration(cursor,email):
     data = {}
@@ -241,10 +223,10 @@ def updateExpiration(cursor,email):
     # Execute the SQL command
     try:
         cursor.execute(query)
-        #data = {"advise":"token updated","token":token,"email":email,"name":name}
+        #data = {"error":"token updated","token":token,"email":email,"name":name}
         return True
     except:
-        data["advise"] = "No se pudieron obtener los datos"
+        data["error"] = "No se pudieron obtener los datos"
         print(data)
         return False
 
@@ -256,14 +238,12 @@ def expireToken(cursor,email):
     # Execute the SQL command
     try:
         cursor.execute(query)
-        #data = {"advise":"token updated","token":token,"email":email,"name":name}
+        #data = {"error":"token updated","token":token,"email":email,"name":name}
         return True
     except:
-        data["advise"] = "No se pudo expirar el token"
+        data["error"] = "No se pudo expirar el token"
         print(data)
         return False
-
-
 
 def validateUser(cursor,email,password):
     query = "select password from users where  TRIM(email) LIKE \""+email+"\";"
@@ -282,5 +262,3 @@ def validateUser(cursor,email,password):
     except:
         print("error en la queru validate user")
         return False
-
-
