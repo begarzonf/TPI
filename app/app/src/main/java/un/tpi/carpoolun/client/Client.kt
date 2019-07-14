@@ -37,7 +37,7 @@ object Client {
 
                     override fun onResponse(call: Call<List<User>>, response: Response<List<User>>) {
                         response.body()?.forEach {
-                            Log.d(TAG, "Name is: " + it.name + ", email is " + it.email)
+                            Log.d(TAG, "Name is: ${it.name}, email is ${it.email}, id is ${it.id}")
                         }
                     }
                 }
@@ -62,8 +62,8 @@ object Client {
             service.createCarpool(carpool).enqueue(callback)
         }
 
-        fun find(neighbourhood: String, time: String, callback: Callback<List<Carpool>>) {
-            service.findCarpools(neighbourhood, time).enqueue(callback)
+        fun find(type: Int,neighbourhood: String, time: String, callback: Callback<List<Carpool>>) {
+            service.findCarpools(type, neighbourhood, time).enqueue(callback)
         }
     }
 }

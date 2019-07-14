@@ -8,11 +8,11 @@ class Carpool(
     @SerializedName("id")            val id: Int? = null,
     @SerializedName("driverId")      val driverId : Int? = null,
     @SerializedName("driverName")    val driverName : String? = null,
-    @SerializedName("time")          val time: String? = null,
+    @SerializedName("time")   val time: String? = null,
     @SerializedName("capacity")      val capacity: Int? = null,
     @SerializedName("capacityLeft")  val capacityLeft: Int? = null,
     @SerializedName("neighbourhood") val neighbourhood: String? = null,
-    @SerializedName("type")          val type: Int? = null,
+    @SerializedName("carpoolType")   val type: Int? = null,
     @SerializedName("fee")           val fee: Int? = null) {
     companion object {
         const val OUT_OF_UN = 1
@@ -27,11 +27,11 @@ class Carpool(
         return "{ id: $id, " +
                 "driverId: '$driverId', " +
                 "driverName: '$driverName', " +
-                "time: '$time', " +
+                "carpoolTime: '$time', " +
                 "capacity: $capacity, " +
                 "capacityLeft: $capacityLeft, " +
                 "neighbourhood: '$neighbourhood', " +
-                "type: ${if(type==TO_UN) "ToUN" else "OutOfUN"}, " +
+                "carpoolType: ${if(type==TO_UN) "ToUN" else "OutOfUN"}, " +
                 "fee: $fee}"
     }
 }

@@ -66,6 +66,11 @@
     <string name="problem_connecting_to_server">There was a problem connecting to server</string>
     <string name="invalid_response">There is a problem with the server\'s response</string>
 
+    <!-- SearchResultsActivity -->
+    <string name="searchResultsActivity_title">Search results</string>
+    <string name="must_select_time_and_date">Must selected valid time and date</string>
+    <string name="must_select_neighbourhood">Must selected a neighbourhood</string>
+    <string name="must_select_type">Must selected carpool type</string>
 
     <!-- Test values -->
     <string name="test_user_email">niquefa.diego@gmail.com</string>

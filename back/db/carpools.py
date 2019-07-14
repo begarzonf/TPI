@@ -60,9 +60,9 @@ def carpoolTime(carpool):
   return carpool["time"]
 
 # Returns Carpool[]
-def findCarpools(cursor, neighbourhood, time):
+def findCarpools(cursor, ctype, neighbourhood, time):
   try:
-    sql = "SELECT * FROM carpools WHERE neighbourhood = '" + neighbourhood + "';"
+    sql = "SELECT * FROM carpools WHERE neighbourhood = '" + neighbourhood + "' AND type = " + str(ctype) + ";"
     cursor.execute(sql)
     results = cursor.fetchall()
     data = []

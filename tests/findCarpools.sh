@@ -1,2 +1,2 @@
-curl http://localhost:5005/carpools/neighbourhood/Rafael Nunez/time/2019-07-18 14:00
+curl http://localhost:5005/carpools/type/0/neighbourhood/Rafael%20Nunez/time/2019-07-18%2014:00
 

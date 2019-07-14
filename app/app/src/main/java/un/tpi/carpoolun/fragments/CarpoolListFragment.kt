@@ -43,7 +43,6 @@ class CarpoolListFragment : Fragment() {
 
         activity ?: return v
 
-        activity.setTitle(R.string.carpoolListFragment_title)
         recyclerView.layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
         serachCarpoolButton.setOnClickListener{ goToSearchActivity() }
 

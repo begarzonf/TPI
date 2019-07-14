@@ -14,8 +14,10 @@ import un.tpi.carpoolun.models.user.User
 const val users = "users"
 const val sessions = "sessions"
 const val carpools = "carpools"
-const val neighbourhood = "neighbourhood"
-const val time = "time"
+
+const val carpoolNeighbourhood = "neighbourhood"
+const val carpoolTime = "time"
+const val carpoolType = "type"
 
 interface CarpoolUNService {
 
@@ -34,10 +36,11 @@ interface CarpoolUNService {
     @POST(carpools)
     fun createCarpool(@Body carpool: Carpool): Call<Carpool>
 
-    @GET("$carpools/$neighbourhood/{$neighbourhood}/$time/{$time}")
+    @GET("$carpools/$carpoolType/{$carpoolType}/$carpoolNeighbourhood/{$carpoolNeighbourhood}/$carpoolTime/{$carpoolTime}")
     fun findCarpools(
-        @Path(neighbourhood) carpoolNeighbourhood: String,
-        @Path(time) carpoolTime: String): Call<List<Carpool>>
+        @Path(carpoolType) type: Int,
+        @Path(carpoolNeighbourhood) neighbourhood: String,
+        @Path(carpoolTime) time: String): Call<List<Carpool>>
 
     //@GET("Users/{user}")
     //fun listUsers(@Path("user") user: String): Call<List<User>>
