@@ -44,7 +44,7 @@
     <string name="searchCarpoolActivity_title">Find a carpool</string>
     <string name="searchCarpoolActivity_selectDate">Select departure date</string>
     <string name="fragmentCarpoolForm_selectTime">Select departure time</string>
-    <string name="fragmentCarpoolForm_neighborhood">Neighborhood:</string>
+    <string name="fragmentCarpoolForm_neighbourhood">neighbourhood:</string>
     <string name="searchCarpoolActivity_search">Search</string>
 
     <!-- Carpool Form-->

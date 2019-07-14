@@ -66,7 +66,6 @@ def createUser():
 
         return jsonify({"error": "el correo ya existe"})
 
-
 #UPDATE REQUEST
 @app.route('/users', methods = ['PUT'])
 def updateUser():
@@ -151,5 +150,8 @@ def createCarpool():
     return jsonify(carpools.createCarpool(db,cursor,driverId,driverName,time,capacity,capacityLeft,neighbourhood,ctype,fee))
 
 
+@app.route('/carpools/neighbourhood/<string:neighbourhood>/time/<string:time>', methods = ['GET'])
+def findCarpools(neighbourhood, time):
+    return jsonify(carpools.findCarpools(cursor,neighbourhood,time))
 if __name__ == "__main__":
     app.run(debug=True,host='127.0.0.1',port = 5005)

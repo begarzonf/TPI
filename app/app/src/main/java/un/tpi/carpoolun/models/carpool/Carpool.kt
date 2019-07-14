@@ -30,7 +30,7 @@ class Carpool(
                 "time: '$time', " +
                 "capacity: $capacity, " +
                 "capacityLeft: $capacityLeft, " +
-                "neighborhood: '$neighbourhood', " +
+                "neighbourhood: '$neighbourhood', " +
                 "type: ${if(type==TO_UN) "ToUN" else "OutOfUN"}, " +
                 "fee: $fee}"
     }

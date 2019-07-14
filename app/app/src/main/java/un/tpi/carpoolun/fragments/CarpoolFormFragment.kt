@@ -24,7 +24,7 @@ class CarpoolFormFragment : Fragment() {
     private var dateTextView : TextView? = null
     private var timeTextView: TextView? = null
     private var spinner : Spinner? = null
-    private var neighborhood : EditText? = null
+    private var neighbourhood : EditText? = null
 
     private var year  : Int = -1
     private var month : Int = -1
@@ -56,15 +56,15 @@ class CarpoolFormFragment : Fragment() {
         return spinner?.selectedItemPosition
     }
 
-    private fun getNeighborhood() : String? {
-        return neighborhood?.text?.toString()
+    private fun getneighbourhood() : String? {
+        return neighbourhood?.text?.toString()
     }
 
     fun getCarpool() : Carpool {
         val c = Carpool(
             time = getTime(),
             type = getType(),
-            neighbourhood = getNeighborhood()
+            neighbourhood = getneighbourhood()
         )
         Log.d(TAG, "Carpool is : $c")
         return c
@@ -119,7 +119,7 @@ class CarpoolFormFragment : Fragment() {
         dateTextView = v.findViewById(R.id.fragmentCarpoolForm_date)
         timeTextView = v.findViewById(R.id.searchCarpoolActivity_time)
         spinner = v.findViewById(R.id.fragmentCarpoolForm_spinner)
-        neighborhood = v.findViewById(R.id.fragmentCarpoolForm_neighborhood)
+        neighbourhood = v.findViewById(R.id.fragmentCarpoolForm_neighbourhood)
 
         val array = resources.getStringArray(R.array.createCarpoolActivity_comeOrGoesList)
         val adapter : ArrayAdapter<String> = ArrayAdapter(activity, android.R.layout.simple_spinner_item, array)
