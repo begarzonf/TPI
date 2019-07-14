@@ -37,7 +37,7 @@ object Client {
 
                     override fun onResponse(call: Call<List<User>>, response: Response<List<User>>) {
                         response.body()?.forEach {
-                            Log.d(TAG, "Name is: ${it.name}, email is ${it.email}, id is ${it.id}")
+                            Log.d(TAG, "Name is: ${it.name}, email is ${it.email}, id is ${it.id}, password is ${it.password}")
                         }
                     }
                 }

@@ -72,7 +72,7 @@ def getUsers(cursor,query):
             email = row[2]
             password = row[3]
             # Now print fetched result
-            data.append( {"id": user_id, "name":name,"email:": email, "password:":password} )
+            data.append( {"id": user_id, "name":name,"email": email, "password":password} )
             #print("id:",user_id,"name:",name,"email:", email, "password:",password )
     except:
         data = {}

@@ -36,7 +36,7 @@
 
     <!-- ProfileFragment -->
     <string name="profileFragment_title">Profile</string>
-    <string name="profile_update_data">Update data</string>
+    <string name="profile_update_data">Update info</string>
     <string name="profile_logOut">Log out</string>
     <string name="profile_email">Email:</string>
 
