@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import un.tpi.carpoolun.R
 import un.tpi.carpoolun.models.carpool.Carpool
 
-class CarpoolAdapter(private val mContext : Context, private val carpools: ArrayList<Carpool>)
+class CarpoolAdapter(private val mContext : Context, private val carpools: List<Carpool>)
     : RecyclerView.Adapter<CarpoolAdapter.CarpoolViewHolder>()
 {
     companion object {

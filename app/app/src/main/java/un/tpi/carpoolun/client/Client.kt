@@ -7,6 +7,7 @@ import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import un.tpi.carpoolun.Constants
+import un.tpi.carpoolun.models.carpool.Carpool
 import un.tpi.carpoolun.models.user.LoggedUser
 import un.tpi.carpoolun.models.user.SignInData
 import un.tpi.carpoolun.models.user.NewUser
@@ -49,6 +50,20 @@ object Client {
 
         fun signIn(signInData: SignInData, callback: Callback<LoggedUser>) {
             service.logIn(signInData).enqueue(callback)
+        }
+    }
+
+    object Carpools {
+        fun list(callback: Callback<List<Carpool>>) {
+            service.listCarpools().enqueue(callback)
+        }
+
+        fun create(carpool: Carpool, callback: Callback<Carpool>) {
+            service.createCarpool(carpool).enqueue(callback)
+        }
+
+        fun find(neighbourhood: String, time: String, callback: Callback<List<Carpool>>) {
+            service.findCarpools(neighbourhood, time).enqueue(callback)
         }
     }
 }
