@@ -43,12 +43,25 @@
     <!-- SearchCarpoolActivity -->
     <string name="searchCarpoolActivity_title">Find a carpool</string>
     <string name="searchCarpoolActivity_selectDate">Select departure date</string>
-    <string name="searchCarpoolActivity_selectTime">Select departure time</string>
-    <string name="searchCarpoolActivity_neighborhood">Neighborhood:</string>
+    <string name="fragmentCarpoolForm_selectTime">Select departure time</string>
+    <string name="fragmentCarpoolForm_neighborhood">Neighborhood:</string>
     <string name="searchCarpoolActivity_search">Search</string>
+
+    <!-- Carpool Form-->
+    <string name="createCarpoolActivity_date">Departure date:</string>
+    <string name="fragmentCarpoolForm_time">Departure time:</string>
+    <string name="createCarpoolActivity_comeOrGoes">Come or goes:</string>
 
     <!-- CreateCarpoolActivity -->
     <string name="createCarpoolActivity_title">Create a carpool</string>
+    <string name="createCarpoolActivity_create">Create</string>
+
+
+    <string-array name="createCarpoolActivity_comeOrGoesList">
+        <item>Comes to UN</item>
+        <item>Departs from UN</item>
+    </string-array>
+
 
     <!-- Test values -->
     <string name="test_user_email">niquefa.diego@gmail.com</string>

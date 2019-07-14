@@ -7,7 +7,7 @@ object Constants {
 
     const val DATE_FORMAT = "yyyy-MM-dd"
     const val TIME_FORMAT = "HH:mm"
-    const val FULL_DATE_FORMAT = "$DATE_FORMAT $TIME_FORMAT"
+    const val FULL_FORMAT = "$DATE_FORMAT $TIME_FORMAT"
 
     object Preferences {
         const val USER_ID = "user_id"

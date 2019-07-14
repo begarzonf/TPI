@@ -1,59 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<androidx.coordinatorlayout.widget.CoordinatorLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:orientation="vertical"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:padding="16dp"
-        tools:context=".activities.SearchCarpoolActivity">
+        android:layout_height="match_parent">
 
-
-    <TextView
-            android:id="@+id/searchCarpoolActivity_date"
-            android:layout_marginTop="16dp"
-            android:hint="@string/searchCarpoolActivity_selectDate"
+    <FrameLayout
+            android:id="@+id/fragment_container"
             android:layout_width="match_parent"
-            android:gravity="center"
-            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
-            android:layout_height="wrap_content"/>
+            android:layout_height="match_parent"
+            android:layout_margin="16dp">
+    </FrameLayout>
 
-    <TextView
-            android:id="@+id/searchCarpoolActivity_time"
-            android:layout_marginTop="16dp"
-            android:hint="@string/searchCarpoolActivity_selectTime"
-            android:layout_width="match_parent"
-            android:gravity="center"
-            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
-            android:layout_height="wrap_content"/>
-
-    <LinearLayout
-            android:layout_marginTop="16dp"
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/searchCarpoolActivity_searchButton"
+            app:srcCompat="@drawable/ic_search_black_24dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-        <TextView
-                android:text="@string/searchCarpoolActivity_neighborhood"
-                android:layout_width="match_parent"
-                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
-                android:layout_height="wrap_content"/>
-
-        <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="text"
-                android:ems="10"
-                android:id="@+id/searchCarpoolActivity_neighborhood"/>
-
-    </LinearLayout>
-
-    <Button
-            android:layout_marginTop="16dp"
-            android:gravity="center"
-            android:id="@+id/searchCarpoolActivity_searchButton"
-            android:text="@string/searchCarpoolActivity_search"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-
-</LinearLayout>
+            android:layout_margin="16dp"
+            android:focusable="true"
+            android:clickable="true"
+            android:layout_gravity="bottom|end"
+            app:layout_anchorGravity="right|end"/>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

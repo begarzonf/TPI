@@ -13,7 +13,7 @@ class Carpool(
     @SerializedName("capacityLeft")  val capacityLeft: Int? = null,
     @SerializedName("neighbourhood") val neighbourhood: String? = null,
     @SerializedName("type")          val type: Int? = null,
-    @SerializedName("fee")         val fee: Int? = null) {
+    @SerializedName("fee")           val fee: Int? = null) {
     companion object {
         const val OUT_OF_UN = 1
         const val TO_UN = 0
@@ -21,5 +21,17 @@ class Carpool(
 
     fun isGood() : Boolean {
         return id != null
+    }
+
+    override fun toString(): String {
+        return "{ id: $id, " +
+                "driverId: '$driverId', " +
+                "driverName: '$driverName', " +
+                "time: '$time', " +
+                "capacity: $capacity, " +
+                "capacityLeft: $capacityLeft, " +
+                "neighborhood: '$neighbourhood', " +
+                "type: ${if(type==TO_UN) "ToUN" else "OutOfUN"}, " +
+                "fee: $fee}"
     }
 }
