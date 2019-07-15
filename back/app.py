@@ -19,7 +19,7 @@ app = Flask(__name__)
 def getMysqlConnection():
     #usersDB
     #db = mysql.connector.connect(user='root', host='192.168.99.101', port='3307', password='password', database='db')
-    db =  mysql.connector.connect(user='begarzonf', host='127.0.0.1', password='password', database='db' , auth_plugin='mysql_native_password')
+    db =  mysql.connector.connect(user='begarzonf', host='db', port='3306', password='password', database='db' , auth_plugin='mysql_native_password')
     return db
 
 db = getMysqlConnection()
@@ -153,4 +153,4 @@ def createCarpool():
 def findCarpools(ctype, neighbourhood, time):
     return jsonify(carpools.findCarpools(cursor,ctype,neighbourhood,time))
 if __name__ == "__main__":
-    app.run(debug=True,host='127.0.0.1',port = 5005)
+    app.run(debug=True,host='0.0.0.0',port = 5005)
