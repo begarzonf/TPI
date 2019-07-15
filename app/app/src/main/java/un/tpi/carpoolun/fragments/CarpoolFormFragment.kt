@@ -19,6 +19,9 @@ class CarpoolFormFragment : Fragment() {
 
     companion object {
         const val TAG = "EagleUN.CarpoolForm"
+        const val TYPE = "EagleUN.CarpoolForm.Type"
+        const val TYPE_SEARCH = 0
+        const val TYPE_CREATE = 1
     }
 
     private var dateTextView : TextView? = null
@@ -113,8 +116,15 @@ class CarpoolFormFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val v: View = inflater.inflate(R.layout.fragment_carpool_form, null)
 
+
         val activity = activity
         activity ?: return v
+
+        val createCarpoolPart : View = v.findViewById(R.id.carpoolFormFragment_createCarpoolPart)
+
+        val fragmentType  = arguments!!.getInt(TYPE)
+        if ( fragmentType.equals(TYPE_CREATE) ) createCarpoolPart.visibility = View.VISIBLE
+        else createCarpoolPart.visibility = View.GONE
 
         dateTextView = v.findViewById(R.id.fragmentCarpoolForm_date)
         timeTextView = v.findViewById(R.id.searchCarpoolActivity_time)

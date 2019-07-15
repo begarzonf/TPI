@@ -2,7 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:orientation="vertical"
               android:layout_width="match_parent"
-              android:layout_height="wrap_content">
+              android:layout_height="wrap_content"
+            android:padding="8dp">
     <LinearLayout
             android:orientation="horizontal"
             android:layout_marginTop="16dp"
@@ -26,7 +27,7 @@
     </LinearLayout>
 
     <LinearLayout
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="16dp"
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -49,7 +50,7 @@
 
 
     <LinearLayout
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="16dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
@@ -70,8 +71,7 @@
     </LinearLayout>
 
     <LinearLayout
-            android:layout_marginTop="32dp"
-            android:layout_marginBottom="32dp"
+            android:layout_marginTop="16dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
@@ -85,6 +85,57 @@
                 android:id="@+id/fragmentCarpoolForm_spinner"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
+    </LinearLayout>
+
+
+    <LinearLayout
+            android:orientation="vertical"
+            android:visibility="visible"
+            android:id="@+id/carpoolFormFragment_createCarpoolPart"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        <LinearLayout
+                android:layout_marginTop="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+            <TextView
+                    android:text="@string/carpoolFormFragment_capacity"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+
+            <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:inputType="number"
+                    android:ems="10"
+                    android:id="@+id/fragmentCarpoolForm_capacity"/>
+        </LinearLayout>
+
+        <LinearLayout
+                android:layout_marginTop="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+            <TextView
+                    android:text="@string/createCarpoolActivity_fee"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+            <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:inputType="number"
+                    android:ems="10"
+                    android:id="@+id/fragmentCarpoolForm_fee"/>
+        </LinearLayout>
+
     </LinearLayout>
 
 </LinearLayout>

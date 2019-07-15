@@ -22,4 +22,5 @@
             android:clickable="true"
             android:layout_gravity="bottom|end"
             app:layout_anchorGravity="right|end"/>
+
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -51,11 +51,16 @@
     <string name="createCarpoolActivity_date">Departure date:</string>
     <string name="fragmentCarpoolForm_time">Departure time:</string>
     <string name="createCarpoolActivity_comeOrGoes">Come or goes:</string>
+    <string name="carpoolFormFragment_capacity">Capacity:</string>
+    <string name="createCarpoolActivity_fee">Fee:</string>
+
 
     <!-- CreateCarpoolActivity -->
     <string name="createCarpoolActivity_title">Create a carpool</string>
     <string name="createCarpoolActivity_create">Create</string>
-
+    <string name="must_specify_capacity">Must specify carpool capacity</string>
+    <string name="must_specify_fee">Must specify carpool type</string>
+    <string name="carpool_created_successfully">Carpool created successfully</string>
 
     <string-array name="createCarpoolActivity_comeOrGoesList">
         <item>Comes to UN</item>
@@ -71,7 +76,7 @@
     <string name="must_select_time_and_date">Must selected valid time and date</string>
     <string name="must_select_neighbourhood">Must selected a neighbourhood</string>
     <string name="must_select_type">Must selected carpool type</string>
-
+    
     <!-- Test values -->
     <string name="test_user_email">niquefa.diego@gmail.com</string>
     <string name="test_user_name">Diego Niquefa</string>

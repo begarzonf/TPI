@@ -15,7 +15,7 @@
         <activity android:name=".activities.SearchResultsActivity">
         </activity>
         <activity
-                android:name=".activities.CreateCarpool"
+                android:name=".activities.CreateCarpoolActivity"
                 android:label="@string/title_activity_create_carpool">
         </activity>
         <activity android:name=".activities.SearchCarpoolActivity">

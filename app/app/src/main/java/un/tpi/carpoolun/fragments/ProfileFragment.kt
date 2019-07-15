@@ -11,7 +11,7 @@ import androidx.fragment.app.Fragment
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import un.tpi.carpoolun.AppPreferences
 import un.tpi.carpoolun.R
-import un.tpi.carpoolun.activities.CreateCarpool
+import un.tpi.carpoolun.activities.CreateCarpoolActivity
 import un.tpi.carpoolun.activities.SignInActivity
 
 class ProfileFragment : Fragment() {
@@ -32,7 +32,7 @@ class ProfileFragment : Fragment() {
     private fun goToCreateCarpoolActivity() {
         val activity = activity
         activity?.let {
-            val intent = Intent(activity, CreateCarpool::class.java)
+            val intent = Intent(activity, CreateCarpoolActivity::class.java)
             activity.startActivity(intent)
         }
     }

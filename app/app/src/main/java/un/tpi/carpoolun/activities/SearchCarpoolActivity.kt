@@ -10,7 +10,6 @@ import androidx.fragment.app.Fragment
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import un.tpi.carpoolun.fragments.CarpoolFormFragment
 
-
 class SearchCarpoolActivity : AppCompatActivity() {
 
     companion object {
@@ -30,6 +29,9 @@ class SearchCarpoolActivity : AppCompatActivity() {
         setTitle(R.string.searchCarpoolActivity_title)
 
         val fragment = CarpoolFormFragment()
+        val bundle = Bundle()
+        bundle.putInt(CarpoolFormFragment.TYPE, CarpoolFormFragment.TYPE_SEARCH)
+        fragment.arguments = bundle
         loadFragment(fragment)
 
         val activity = this
