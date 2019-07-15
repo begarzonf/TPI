@@ -1,0 +1,90 @@
+<resources>
+    <string name="app_name">CarpoolUN</string>
+
+    <!-- SignInActivity -->
+    <string name="title_activity_sign_in">Iniciar sesión</string>
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Contraseña</string>
+    <string name="action_sign_in">Iniciar sesión</string>
+    <string name="welcome">"Bienvenido!"</string>
+    <string name="invalid_username">Nombre de usuario inválido</string>
+    <string name="invalid_password">La contraseña debe tener 8 o más carácteres</string>
+    <string name="login_failed">Inicio de sesión fallido</string>
+    <string name="login_successful">Inicio de sesión exitoso</string>
+    <string name="do_not_have_account">No tienes una cuenta? Creala aquí:</string>
+
+    <!-- SignUpActivity -->
+    <string name="title_activity_sign_up">Crear cuenta</string>
+    <string name="hint_user_name">Nombre</string>
+    <string name="hint_user_lastName">Apellido</string>
+    <string name="hint_password">Contraseña</string>
+    <string name="hint_password_confirmation">Confirmar contraseña</string>
+    <string name="action_sign_up">Crear cuenta</string>
+    <string name="already_have_account">Ya tienes una cuenta? Inicia sesión aquí:</string>
+    <string name="user_created_successfully">Cuenta creada exitosamente</string>
+    <string name="passwords_do_not_match">Contraseñas no coinciden</string>
+    <string name="failed_to_create_user">Ocurrió un error en la creasión del usuario</string>
+
+    <!-- CarpoolListFragment -->
+    <string name="carpoolListFragment_title">Carpools</string>
+    <string name="carpoolListFragment_titleTypeGoes">Va a: %1$s</string>
+    <string name="carpoolListFragment_titleTypeComes">Viene de: %1$s</string>
+    <string name="carpoolListFragment_capacity">Cupos disponibles: %1$s/%2$s</string>
+    <string name="carpoolListFragment_driver">Conductor: %1$s</string>
+    <string name="carpoolListFragment_time">Hora de salida: %1$s</string>
+    <string name="carpoolListFragment_fee">Valor de cupo: %1$s</string>
+
+    <!-- ProfileFragment -->
+    <string name="profileFragment_title">Perfil</string>
+    <string name="profile_update_data">Actualizar información</string>
+    <string name="profile_logOut">Cerrar sesión</string>
+    <string name="profile_email">Email:</string>
+
+    <!-- SearchCarpoolActivity -->
+    <string name="searchCarpoolActivity_title">Buscar un carpool</string>
+    <string name="searchCarpoolActivity_selectDate">Seleccionar fecha de salida</string>
+    <string name="fragmentCarpoolForm_selectTime">Seleccionar hora de salida</string>
+    <string name="fragmentCarpoolForm_neighbourhood">Barrio:</string>
+    <string name="searchCarpoolActivity_search">Buscar</string>
+
+    <!-- Carpool Form-->
+    <string name="createCarpoolActivity_date">Fecha de salida:</string>
+    <string name="fragmentCarpoolForm_time">Hora de salida:</string>
+    <string name="createCarpoolActivity_comeOrGoes">Viene o va:</string>
+    <string name="carpoolFormFragment_capacity">Capacidad:</string>
+    <string name="createCarpoolActivity_fee">Costo de cupo:</string>
+
+
+    <!-- CreateCarpoolActivity -->
+    <string name="createCarpoolActivity_title">Crear un carpool</string>
+    <string name="createCarpoolActivity_create">Crear</string>
+    <string name="must_specify_capacity">Debe especificar la capacidad del carpool</string>
+    <string name="must_specify_fee">Debe especificar el tipo de carpool</string>
+    <string name="carpool_created_successfully">Carpool creado exitosamente!</string>
+
+    <string-array name="createCarpoolActivity_comeOrGoesList">
+        <item>Viene a la UN</item>
+        <item>Sale de la UN</item>
+    </string-array>
+
+    <!-- errors -->
+    <string name="problem_connecting_to_server">Hubo un problema conectandose al servidor</string>
+    <string name="invalid_response">Hay un problema con la respuesta del servidor</string>
+
+    <!-- SearchResultsActivity -->
+    <string name="searchResultsActivity_title">Resultados de búsqueda</string>
+    <string name="must_select_time_and_date">Debe seleccionar una hora y fecha</string>
+    <string name="must_select_neighbourhood">Debe seleccionar un barrio</string>
+    <string name="must_select_type">Debe seleccionar un tipo de carpool</string>
+
+    <!-- Test values -->
+    <string name="test_user_email">niquefa.diego@gmail.com</string>
+    <string name="test_user_name">Diego Niquefa</string>
+    <string name="test_carpoolTitle">Goes to: Tintal</string>
+    <string name="test_carpoolCapacity">Seats available: 3/5</string>
+    <string name="test_carpoolDriver">Driver: Juan Perez</string>
+    <string name="test_carpoolTime">Departure at: 2019-07-18 06:30</string>
+    <string name="test_carpoolFee">Fee: 3000</string>
+    <string name="title_activity_create_carpool">CreateCarpool</string>
+
+</resources>
