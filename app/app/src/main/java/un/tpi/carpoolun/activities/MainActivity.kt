@@ -52,7 +52,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        Client.Users.list()
         if ( AppPreferences.getUserToken(this) == "" ) {
             goToSignInActivity()
         }

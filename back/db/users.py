@@ -95,7 +95,6 @@ def newUser(db,cursor,name,email,password):
         db.rollback()
         return {"error":"error on insert"}
 
-
 def updateUser(db,cursor,id,new_name):
     sql = "update users set name = \""+new_name+"\" where id = \""+str(id)+"\";"
     print(sql)

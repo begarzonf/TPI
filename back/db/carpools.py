@@ -20,15 +20,19 @@ def row2dict(row):
     "fee": fee
   }
 
+def carpoolTime(carpool):
+  return carpool["time"]
+
 # Returns Carpool[]
 def getAllCarpools(cursor):
   try:
-    sql = "SELECT * FROM carpools"
+    sql = "SELECT * FROM carpools LIMIT 100"
     cursor.execute(sql)
     results = cursor.fetchall()
     data = []
     for row in results:
       data.append(row2dict(row))
+    data = sorted(data, reverse = True, key = carpoolTime)
     return data
   except Exception as e:
     return { "error": "No se pudieron obtener los datos", "exception": str(e) }
@@ -55,9 +59,6 @@ def createCarpool(db,cursor,driverId,driverName,time,capacity,capacityLeft,neigh
     db.rollback()
     print(e)
     return { "error":"error on insert carpool", "exception": str(e) }
-
-def carpoolTime(carpool):
-  return carpool["time"]
 
 # Returns Carpool[]
 def findCarpools(cursor, ctype, neighbourhood, time):

@@ -12,7 +12,7 @@ class Carpool(
     @SerializedName("capacity")      val capacity: Int? = null,
     @SerializedName("capacityLeft")  val capacityLeft: Int? = null,
     @SerializedName("neighbourhood") val neighbourhood: String? = null,
-    @SerializedName("carpoolType")   val type: Int? = null,
+    @SerializedName("type")   val type: Int? = null,
     @SerializedName("fee")           val fee: Int? = null) {
     companion object {
         const val OUT_OF_UN = 1

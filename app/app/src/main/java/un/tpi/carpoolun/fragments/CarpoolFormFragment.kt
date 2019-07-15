@@ -28,6 +28,8 @@ class CarpoolFormFragment : Fragment() {
     private var timeTextView: TextView? = null
     private var spinner : Spinner? = null
     private var neighbourhood : EditText? = null
+    private var capacity : EditText? = null
+    private var fee : EditText? = null
 
     private var year  : Int = -1
     private var month : Int = -1
@@ -63,11 +65,29 @@ class CarpoolFormFragment : Fragment() {
         return neighbourhood?.text?.toString()
     }
 
+    private fun getCapacity() : Int? {
+        try {
+            val s = capacity?.text?.toString()
+            return s?.toInt()
+        } catch ( e: Exception ) {}
+        return null
+    }
+
+    private fun getFee() : Int? {
+        try {
+            val s = fee?.text?.toString()
+            return s?.toInt()
+        } catch ( e: Exception ) {}
+        return null
+    }
+
     fun getCarpool() : Carpool {
         val c = Carpool(
             time = getTime(),
             type = getType(),
-            neighbourhood = getneighbourhood()
+            neighbourhood = getneighbourhood(),
+            capacity = getCapacity(),
+            fee = getFee()
         )
         Log.d(TAG, "Carpool is : $c")
         return c
@@ -130,6 +150,8 @@ class CarpoolFormFragment : Fragment() {
         timeTextView = v.findViewById(R.id.searchCarpoolActivity_time)
         spinner = v.findViewById(R.id.fragmentCarpoolForm_spinner)
         neighbourhood = v.findViewById(R.id.fragmentCarpoolForm_neighbourhood)
+        capacity = v.findViewById(R.id.fragmentCarpoolForm_capacity)
+        fee = v.findViewById(R.id.fragmentCarpoolForm_fee)
 
         val array = resources.getStringArray(R.array.createCarpoolActivity_comeOrGoesList)
         val adapter : ArrayAdapter<String> = ArrayAdapter(activity, android.R.layout.simple_spinner_item, array)

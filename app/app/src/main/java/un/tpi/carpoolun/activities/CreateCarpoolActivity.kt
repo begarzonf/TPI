@@ -1,5 +1,6 @@
 package un.tpi.carpoolun.activities
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
@@ -28,7 +29,8 @@ class CreateCarpoolActivity : AppCompatActivity() {
     }
 
     fun gotToMainActivity() {
-
+        val intent = Intent(this, MainActivity::class.java)
+        startActivity(intent)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
