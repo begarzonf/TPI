@@ -1,0 +1,21 @@
+version: "2.1"
+services:
+  back:
+    build: .
+    command: python3 -u app.py
+    ports:
+      - "5005:5005"
+  db:
+    image: mysql
+    healthcheck:
+      test: "mysqlcheck -u$$MYSQL_USER -p$$MYSQL_PASSWORD $$MYSQL_DATABASE"
+      interval: 20s
+      timeout: 5s
+      retries: 15
+    environment:
+        MYSQL_DATABASE: 'db'
+        MYSQL_USER: 'begarzonf'
+        MYSQL_PASSWORD: 'password'
+        MYSQL_ROOT_PASSWORD: 'password'
+    ports:
+        - "3306:3306"
